@@ -4,8 +4,8 @@ The following instruction will allow a user to setup the software pipeline for m
 - GoProRos [1]: software for converting GoPro video files into ROS2 bag files
 - SVIn2 [2]: A Visual Inertial SLAM package based on Okvis [3].
 - Colmap [4]: A shape from motion package for global optimization and dense reconstruction
-
-## GoProRos:
+## Installation
+### GoProRos2:
 Follow the installation instructions at:
 
 It is possible you will need to install the following libraries separately:
@@ -15,9 +15,31 @@ sudo apt-get install libavdevice-dev
 sudo apt-get install libavfilter-dev
 ```
 
-## SVIn:
+### SVIn:
 
-## Colmap:
+### Colmap:
+
+## Usage
+### GoProRos2
+In order to convert a GoPro video file into a a ROS2 bag file you will need to have two directories:
+```
+goproVideos/
+ros2bagfiles/
+```
+
+Then run the following command(s):
+
+For a single video:
+```
+
+```
+For a sequence of videos saved inside a directory:
+```
+
+```
+
+
+
 
 ### Citations:
 The above pipeline is based on the following publications:
