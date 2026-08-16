@@ -6,6 +6,14 @@ The following instruction will allow a user to setup the software pipeline for m
 - Colmap [4]: A shape from motion package for global optimization and dense reconstruction
 
 ## GoProRos:
+Follow the installation instructions at:
+
+It is possible you will need to install the following libraries separately:
+```
+sudo apt install libpostproc-dev
+sudo apt-get install libavdevice-dev
+sudo apt-get install libavfilter-dev
+```
 
 ## SVIn:
 
