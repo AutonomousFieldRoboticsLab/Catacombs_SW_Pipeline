@@ -16,6 +16,17 @@ Follow the installation instructions at:
 https://github.com/AutonomousFieldRoboticsLab/SVIn/blob/main/install.md
 
 
+### Svin-Perdix-Matcher:
+```
+mkdir ~/depth_matcher_ws
+cd ~/depth_matcher_ws
+git clone https://github.com/AutonomousFieldRoboticsLab/Svin-Perdix-Matcher .
+sudo apt install python3-venv
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install -r requirements.txt
+```
+
 ### Colmap:
 ---
 ## Usage
@@ -74,7 +85,7 @@ To transform to real water depth from a dive computer:
 ```bash
 cd ~/depth_matcher_ws
 source .venv/bin/activate
-python3 svin_perdix_matcher.py ~/Desktop/Catacombs/Perdix/CatacombsPerdix.csv ~/svin_ws/src/SVIn/pose_graph/svin_results/<svin_2026_file.txt> <output_path> {m|ft}
+python3 svin_perdix_matcher.py ~/Desktop/Catacombs/Perdix/CatacombsPerdix.csv ~/svin_ws/src/SVIn/pose_graph/svin_results/<svin_2026_file.txt> <output_path> {m|ft} --pointcloud ~/svin_ws/src/SVIn/pose_graph/reconstruction_results/<svin_2026_file.ply>
 ```
 Please note: the matcher uses data from the dive computer in ft or meters {m|ft}.
 Please note: the matcher reports several images as described in the paper together with the adjusted trajectory
