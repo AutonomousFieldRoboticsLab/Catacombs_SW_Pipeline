@@ -21,7 +21,7 @@ https://github.com/AutonomousFieldRoboticsLab/SVIn/blob/main/install.md
 ## Usage
 
 ### GoProRos2
-In order to convert a GoPro video file into a a ROS2 bag file you will need to have two directories (one for the video files and one for the bag file) for example:
+In order to convert a GoPro video file into a ROS2 bag file you will need to have two directories (one for the video files and one for the bag file) for example:
 ```
 ~/Desktop/Catacombs/Videos/Center/
 ~/Desktop/Catacombs/ros2bags/center_bag
@@ -37,6 +37,8 @@ For a single video:
 ```
 
 ```
+The above instruction will save gray-scale images. For color images see the section on extracting keyframes. 
+
 ### SVIn:
 Run the launch file for GoPro 9:
 
