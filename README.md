@@ -7,38 +7,47 @@ The following instruction will allow a user to setup the software pipeline for m
 ## Installation
 ### GoProRos2:
 Follow the installation instructions at:
-
-It is possible you will need to install the following libraries separately:
 ```
-sudo apt install libpostproc-dev
-sudo apt-get install libavdevice-dev
-sudo apt-get install libavfilter-dev
+https://github.com/AutonomousFieldRoboticsLab/gopro_ros2
 ```
 
 ### SVIn:
+Follow the installation instructions at:
+https://github.com/AutonomousFieldRoboticsLab/SVIn/blob/main/install.md
+
 
 ### Colmap:
 
 ## Usage
 ### GoProRos2
-In order to convert a GoPro video file into a a ROS2 bag file you will need to have two directories:
+In order to convert a GoPro video file into a a ROS2 bag file you will need to have two directories (one for the video files and one for the bag file) for example:
 ```
-goproVideos/
-ros2bagfiles/
+~/Desktop/Catacombs/Videos/Center/
+~/Desktop/Catacombs/ros2bags/center_bag
 ```
 
 Then run the following command(s):
 
+For a sequence of videos saved inside a directory (please note, ~ is not always recognized, so replace with the full path):
+```
+ros2 launch gopro_ros2 gopro_to_rosbag.xml gopro_folder:=~/Desktop/Catacombs/Videos/Center/ multiple_files:=true rosbag:=~/Desktop/Catacombs/ros2bags/center_bag
+```
 For a single video:
 ```
 
 ```
-For a sequence of videos saved inside a directory:
+### SVIn:
+Run the launch file for GoPro 9:
+
+```bash
+source install/setup.bash
+ros2 launch okvis_ros svin_gopro_uw.xml
 ```
+In different terminal, run the bag file
 
+```bash
+ros2 bag play ~/Desktop/Catacombs/ros2bags/center_bag --clock
 ```
-
-
 
 
 ### Citations:
