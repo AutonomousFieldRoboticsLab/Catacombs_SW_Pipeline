@@ -3,20 +3,22 @@ The following instruction will allow a user to setup the software pipeline for m
 
 - GoProRos [1]: software for converting GoPro video files into ROS2 bag files
 - SVIn2 [2]: A Visual Inertial SLAM package based on Okvis [3].
+- Depth matcher [4]: Adjusting the trajectory Z-component based on dive computer measurments.
 - Colmap [4]: A shape from motion package for global optimization and dense reconstruction
 ## Installation
-### GoProRos2:
+### GoProRos2: Transforming GoPro videos to ROS2 bag files
 Follow the installation instructions at:
 ```
 https://github.com/AutonomousFieldRoboticsLab/gopro_ros2
 ```
 
-### SVIn:
+### SVIn: Visual-Inertial SLAM
 Follow the installation instructions at:
 https://github.com/AutonomousFieldRoboticsLab/SVIn/blob/main/install.md
 
 
 ### Svin-Perdix-Matcher:
+Follow the installation instructions at: https://github.com/AutonomousFieldRoboticsLab/Svin-Perdix-Matcher
 ```
 mkdir ~/depth_matcher_ws
 cd ~/depth_matcher_ws
@@ -25,6 +27,12 @@ sudo apt install python3-venv
 python3 -m venv .venv
 source .venv/bin/activate
 python3 -m pip install -r requirements.txt
+```
+
+### Utils: Extracting Keyframes from a bagfile based on a SVIn2 trajectory:
+Follow the installation instructions at:
+```
+https://github.com/AutonomousFieldRoboticsLab/utils_ros2
 ```
 
 ### Colmap:
@@ -89,6 +97,20 @@ python3 svin_perdix_matcher.py ~/Desktop/Catacombs/Perdix/CatacombsPerdix.csv ~/
 ```
 Please note: the matcher uses data from the dive computer in ft or meters {m|ft}.
 Please note: the matcher reports several images as described in the paper together with the adjusted trajectory
+
+### Keyframe Extraction
+
+Gray-scale or color images can be extracted from videos into ROS2 bagfiles. For converting into a color bagfile add grayscale:=false:
+```
+source ~/gopro_ros2_ws/install/setup.bash
+ros2 launch gopro_ros2 gopro_to_rosbag.xml gopro_folder:=~/Desktop/Catacombs/Videos/Center/ multiple_files:=true rosbag:=~/Desktop/Catacombs/ros2bags/center_color_bag grayscale:=false
+```
+Then use the write_keyframe_images script from the utils_ros2 package:
+
+### Trajectory alignment
+If there are more than one trajectory where the a common calibration pattern was observed, the trajectories can be aligned using the following steps:
+
+
 ### Citations:
 The above pipeline is based on the following publications:
 ```
@@ -120,7 +142,15 @@ The above pipeline is based on the following publications:
     year={2015},
     publisher={SAGE Publications Sage UK: London, England}
 }
-[4] @inproceedings{schonberger2016structure,
+[4] @InProceedings{ChatzispyrouICRA2026,
+    author = 	 {Michalis Chatzispyrou and Luke Horgan and Hyunkil Hwang and Harish Sathishchandra and Chinmay Burgul and Monika Roznere and Alberto Quattrini Li and Philippos Mordohai and Ioannis Rekleitis},
+    title = 	 {{Mapping Pamir: Multi-Session Visual/Inertial SLAM and 3D Reconstruction of an Underwater Shipwreck}},
+    booktitle = {IEEE International Conference on Robotics and Automation (ICRA)},
+    year = 	 2026,
+    month = 	 {Jun.},
+    address = 	 {Vienna, Austria}
+}
+[5] @inproceedings{schonberger2016structure,
     title={Structure-from-motion revisited},
     author={Schonberger, Johannes L and Frahm, Jan-Michael},
     booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition},
