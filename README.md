@@ -19,6 +19,7 @@ https://github.com/AutonomousFieldRoboticsLab/SVIn/blob/main/install.md
 ### Colmap:
 
 ## Usage
+
 ### GoProRos2
 In order to convert a GoPro video file into a a ROS2 bag file you will need to have two directories (one for the video files and one for the bag file) for example:
 ```
@@ -46,10 +47,35 @@ ros2 launch okvis_ros svin_gopro_uw.xml
 In different terminal, run the bag file
 
 ```bash
+source /opt/ros/jazzy/setup.bash
 ros2 bag play ~/Desktop/Catacombs/ros2bags/center_bag --clock
 ```
+To save the trajectory:
+```
+ros2 service call /save_trajectory std_srvs/srv/Trigger {}
+```
+Trajectory is saved at 
+```
+~/svin_ws/src/SVIn/pose_graph/svin_results
+```
+To save the pointcloud:
+```
+ros2 service call /save_pointcloud std_srvs/srv/Trigger {}
+```
 
+Pointcloud is saved at:
+```
+~/svin_ws/src/SVIn/pose_graph/reconstruction_results
+```
 
+To transform to real water depth from a dive computer:
+```bash
+cd ~/depth_matcher_ws
+source .venv/bin/activate
+python3 svin_perdix_matcher.py ~/Desktop/Catacombs/Perdix/CatacombsPerdix.csv ~/svin_ws/src/SVIn/pose_graph/svin_results/<svin_2026_file.txt> <output_path> {m|ft}
+```
+Please note: the matcher uses data from the dive computer in ft or meters {m|ft}.
+Please note: the matcher reports several images as described in the paper together with the adjusted trajectory
 ### Citations:
 The above pipeline is based on the following publications:
 ```
