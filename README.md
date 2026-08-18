@@ -8,9 +8,7 @@ The following instruction will allow a user to setup the software pipeline for m
 ## Installation
 ### GoProRos2: Transforming GoPro videos to ROS2 bag files
 Follow the installation instructions at:
-```
-https://github.com/AutonomousFieldRoboticsLab/gopro_ros2
-```
+[https://github.com/AutonomousFieldRoboticsLab/gopro_ros2](https://github.com/AutonomousFieldRoboticsLab/gopro_ros2#installation)
 
 ### SVIn: Visual-Inertial SLAM
 Follow the installation instructions at:
@@ -18,22 +16,14 @@ https://github.com/AutonomousFieldRoboticsLab/SVIn/blob/main/install.md
 
 
 ### Svin-Perdix-Matcher:
-Follow the installation instructions at: https://github.com/AutonomousFieldRoboticsLab/Svin-Perdix-Matcher
-```
-mkdir ~/depth_matcher_ws
-cd ~/depth_matcher_ws
-git clone https://github.com/AutonomousFieldRoboticsLab/Svin-Perdix-Matcher .
-sudo apt install python3-venv
-python3 -m venv .venv
-source .venv/bin/activate
-python3 -m pip install -r requirements.txt
-```
+Follow the installation instructions at: 
+[https://github.com/AutonomousFieldRoboticsLab/Svin-Perdix-Matcher](https://github.com/AutonomousFieldRoboticsLab/Svin-Perdix-Matcher#installation)
+
 
 ### Utils: Extracting Keyframes from a bagfile based on a SVIn2 trajectory:
 Follow the installation instructions at:
-```
 https://github.com/AutonomousFieldRoboticsLab/utils_ros2
-```
+
 
 ### Colmap:
 ---
