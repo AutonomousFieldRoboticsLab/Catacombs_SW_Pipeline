@@ -96,6 +96,13 @@ source ~/gopro_ros2_ws/install/setup.bash
 ros2 launch gopro_ros2 gopro_to_rosbag.xml gopro_folder:=~/Desktop/Catacombs/Videos/Center/ multiple_files:=true rosbag:=~/Desktop/Catacombs/ros2bags/center_color_bag grayscale:=false
 ```
 Then use the write_keyframe_images script from the utils_ros2 package:
+```bash
+cd ~/utils_ros2_ws/
+source ~/utils_ros2_ws/install/setup.bash
+ros2 launch utils_ros2 write_keyframe_images.xml bag_file:=~/Desktop/Catacombs/ros2bags/center_color_bag/ image_dir:=~/Desktop/Catacombs/Keyframes/center_color/ traj_file:=~/svin_ws/src/SVIn/pose_graph/svin_results/svin_2026_08_17_18_29_40.txt  config_file:=./src/utils_ros2/config/gopro/gopro1.yaml
+```
+As noted above the trajectory is saved inside the SVIn2 workspace. 
+Please note, the config directory of the utils contains the camera configuration file.
 
 ### Trajectory alignment
 If there are more than one trajectory where the a common calibration pattern was observed, the trajectories can be aligned using the following steps:
